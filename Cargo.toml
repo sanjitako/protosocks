@@ -18,25 +18,24 @@ exclude = [
 ]
 
 [dependencies]
-bytes = "0.5"
+bytes = "1"
 log = "0.4"
 num-traits = "0.2"
 num-derive = "0.3"
-serde = "1.0"
-serde_derive = "1.0"
+serde = "1"
+serde_derive = "1"
 #smolsocket = { version = "0.3", default-features = false }
 smolsocket = { path = "../smolsocket", default-features = false }
-smoltcp = { path = "../smoltcp", default-features = false }
-snafu = "0.4.1"
+snafu = "0.6.10"
 
 [dev-dependencies]
 lazy_static = "1.4.0"
 pretty_env_logger = "0.3"
 
 [features]
-std = ["smolsocket/std", "smoltcp/std"]
-"proto-ipv4" = ["smolsocket/proto-ipv4", "smoltcp/proto-ipv4"]
-"proto-ipv6" = ["smolsocket/proto-ipv6", "smoltcp/proto-ipv6"]
+std = ["smolsocket/std"]
+"proto-ipv4" = ["smolsocket/proto-ipv4"]
+"proto-ipv6" = ["smolsocket/proto-ipv6"]
 default = [
     "proto-ipv4", "proto-ipv6",
     "std"
