@@ -5,6 +5,8 @@ use bytes::{Buf, BytesMut};
 
 use super::{Cmd, CrateResult, Decoder, Encodable, Encoder, Error, field, HasAddr, Rep, SocksAddr, Ver};
 use super::addr::field_port;
+use crate::protocol::addr::Addr;
+use crate::smolsocket::{SocketAddr, SocketAddrV4};
 
 // Requests
 //
@@ -340,6 +342,12 @@ impl CmdRepr {
 
     pub fn new_bind(addr: SocksAddr) -> Self {
         CmdRepr { cmd: Cmd::Bind, addr }
+    }
+
+    pub fn new_connect_std(std_addr : std::net::SocketAddr) -> Self{
+        let s_ipaddr = smoltcp::wire::IpAddress::from(std_addr);
+        let s_addr = Addr::new_socket(SocketAddr::new(s_ipaddr,std_addr.port()).unwrap());
+        CmdRepr{cmd : Cmd::Connect , addr:s_addr}
     }
 
     pub fn new_udp_associate(addr: SocksAddr) -> Self {
