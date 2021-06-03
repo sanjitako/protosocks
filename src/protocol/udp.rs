@@ -4,7 +4,7 @@ use std::time::{Duration, SystemTime};
 
 use bytes::{Buf, Bytes, BytesMut};
 
-use smolsocket::port_from_bytes;
+use crate::smolsocket::port_from_bytes;
 
 use crate::field::Field;
 

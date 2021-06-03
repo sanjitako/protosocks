@@ -17,6 +17,7 @@ pub use protocol::{
 };
 
 pub(crate) mod protocol;
+mod smolsocket;
 
 pub(crate) mod field {
     pub type Field = ::core::ops::Range<usize>;
@@ -257,7 +258,7 @@ mod tests {
     use bytes::BytesMut;
     use lazy_static::lazy_static;
 
-    use smolsocket::SocketAddr;
+    use crate::smolsocket::SocketAddr;
 
     use crate::{AuthReplyRepr, CmdRepr, Error, MethodRepr, MethodsRepr, protocol::{Decoder, Encodable, Method}, RepRepr, SocksAddr, Status, UserPassRepr};
 

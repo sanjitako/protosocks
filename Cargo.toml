@@ -18,25 +18,27 @@ exclude = [
 ]
 
 [dependencies]
-bytes = "1"
+bytes = { version = "1",features = ["serde"]}
+byteorder = "1"
 log = "0.4"
 num-traits = "0.2"
 num-derive = "0.3"
 serde = "1"
 serde_derive = "1"
-#smolsocket = { version = "0.3", default-features = false }
-smolsocket = { path = "../smolsocket", default-features = false }
+smoltcp = { git = "https://github.com/sanjitako/smoltcp", default-features = false, features = [] }
 snafu = "0.6.10"
 
 [dev-dependencies]
 lazy_static = "1.4.0"
-pretty_env_logger = "0.3"
+pretty_env_logger = "0.4"
 
 [features]
-std = ["smolsocket/std"]
-"proto-ipv4" = ["smolsocket/proto-ipv4"]
-"proto-ipv6" = ["smolsocket/proto-ipv6"]
+std = ["smoltcp/std"]
+verbose = []
+"proto-ipv4" = ["smoltcp/proto-ipv4"]
+"proto-ipv6" = ["smoltcp/proto-ipv6"]
+# `RUST_BACKTRACE=1 cargo test --lib --no-default-features --features default -- --exact --nocapture --test-threads=1`
 default = [
-    "proto-ipv4", "proto-ipv6",
-    "std"
+    "std",
+    "proto-ipv4", "proto-ipv6"
 ]

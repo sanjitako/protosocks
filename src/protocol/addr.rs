@@ -2,11 +2,11 @@ use core::cmp::min;
 use core::convert::TryFrom;
 use core::fmt;
 
-use smolsocket::{port_from_bytes, port_to_bytes, SocketAddr};
 
 use crate::field::Field;
 
 use super::{Atyp, CrateResult, Error};
+use crate::smolsocket::{port_from_bytes, port_to_bytes, SocketAddr};
 
 /// includes length of domain if addr is domain:port
 #[inline]

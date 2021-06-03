@@ -529,7 +529,7 @@ mod tests {
     use smoltcp::wire::Ipv6Address;
 
     #[cfg(any(feature = "proto-ipv4", feature = "proto-ipv6"))]
-    use smolsocket::SocketAddr;
+    use crate::smolsocket::SocketAddr;
 
     use crate::Atyp;
 
