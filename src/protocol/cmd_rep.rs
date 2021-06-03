@@ -344,8 +344,8 @@ impl CmdRepr {
         CmdRepr { cmd: Cmd::Bind, addr }
     }
 
-    pub fn new_connect_std(std_addr : std::net::SocketAddr) -> Self{
-        let s_ipaddr = smoltcp::wire::IpAddress::from(std_addr);
+    pub fn new_connect_std(std_addr : ::std::net::SocketAddr) -> Self{
+        let s_ipaddr = smoltcp::wire::IpAddress::from(std_addr.ip());
         let s_addr = Addr::new_socket(SocketAddr::new(s_ipaddr,std_addr.port()).unwrap());
         CmdRepr{cmd : Cmd::Connect , addr:s_addr}
     }
